@@ -6,7 +6,7 @@
 package com.acosux.MSUpdates.service;
 
 import com.acosux.MSUpdates.util.UpdateTO;
-import com.acosux.MSUpdates.util.ComboGenericoTO;
+import com.acosux.MSUpdates.util.VersionTO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class UpdateServiceImpl implements UpdateService {
     }
 
    @Override
-    public List <ComboGenericoTO>  listarVersiones() throws Exception {
+    public List <VersionTO>  listarVersiones() throws Exception {
         return actualizacionDao.listarVersiones();
     }
 

@@ -6,7 +6,7 @@
 package com.acosux.MSUpdates.dao;
 
 import com.acosux.MSUpdates.util.UpdateTO;
-import com.acosux.MSUpdates.util.ComboGenericoTO;
+import com.acosux.MSUpdates.util.VersionTO;
 import com.acosux.MSUpdates.util.dao.GenericDaoImpl;
 import com.acosux.MSUpdates.util.dao.GenericSQLDao;
 import java.util.List;
@@ -30,9 +30,9 @@ public class UpdateDaoImpl extends GenericDaoImpl<UpdateTO, Integer> implements 
     }
     
      @Override
-    public List <ComboGenericoTO> listarVersiones() throws Exception {
-        String sql = "SELECT DISTINCT  act_secuencial as clave, act_version as valor FROM actualizaciones.act_actualizaciones ORDER BY act_version";
-        return genericSQLDao.obtenerPorSql(sql, ComboGenericoTO.class);
+    public List <VersionTO> listarVersiones() throws Exception {
+        String sql = "SELECT DISTINCT act_version FROM actualizaciones.act_actualizaciones ORDER BY act_version";
+        return genericSQLDao.obtenerPorSql(sql, VersionTO.class);
     }
 
 }

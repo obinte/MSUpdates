@@ -6,7 +6,7 @@
 package com.acosux.MSUpdates.controller;
 
 import com.acosux.MSUpdates.util.UpdateTO;
-import com.acosux.MSUpdates.util.ComboGenericoTO;
+import com.acosux.MSUpdates.util.VersionTO;
 import com.acosux.MSUpdates.util.RespuestaWebTO;
 import com.acosux.MSUpdates.util.UtilsJSON;
 import java.util.List;
@@ -52,7 +52,7 @@ public class UpdateController {
         RespuestaWebTO resp = new RespuestaWebTO();
         resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.ADVERTENCIA.getValor());
         try {
-            List <ComboGenericoTO> respues = actualizacionService.listarVersiones();
+            List <VersionTO> respues = actualizacionService.listarVersiones();
             resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.EXITO.getValor());
             resp.setExtraInfo(respues);
         } catch (Exception e) {

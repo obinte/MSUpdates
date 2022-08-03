@@ -6,7 +6,7 @@
 package com.acosux.MSUpdates.service;
 
 import com.acosux.MSUpdates.util.UpdateTO;
-import com.acosux.MSUpdates.util.ComboGenericoTO;
+import com.acosux.MSUpdates.util.VersionTO;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +19,6 @@ public interface UpdateService {
 
     public List <UpdateTO>  buscarActualizacionesPorVersion(String version) throws Exception;
     
-    public List <ComboGenericoTO>  listarVersiones() throws Exception;
+    public List <VersionTO>  listarVersiones() throws Exception;
 
 }
