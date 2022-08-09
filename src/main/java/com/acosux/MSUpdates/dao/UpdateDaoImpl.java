@@ -24,14 +24,14 @@ public class UpdateDaoImpl extends GenericDaoImpl<UpdateTO, Integer> implements 
     private GenericSQLDao genericSQLDao;
 
     @Override
-    public List <UpdateTO> buscarActualizacionesPorVersion(String version) throws Exception {
+    public List<UpdateTO> buscarActualizacionesPorVersion(String version) throws Exception {
         String sql = "SELECT * FROM actualizaciones.act_actualizaciones WHERE act_version='" + version + "'";
         return genericSQLDao.obtenerPorSql(sql, UpdateTO.class);
     }
-    
-     @Override
-    public List <VersionTO> listarVersiones() throws Exception {
-        String sql = "SELECT DISTINCT act_version FROM actualizaciones.act_actualizaciones ORDER BY act_version";
+
+    @Override
+    public List<VersionTO> listarVersiones() throws Exception {
+        String sql = "SELECT DISTINCT act_version FROM actualizaciones.act_actualizaciones ORDER BY act_version DESC";
         return genericSQLDao.obtenerPorSql(sql, VersionTO.class);
     }
 
