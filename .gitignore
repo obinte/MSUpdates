@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+/target/
+target/classes/.netbeans_automatic_build
+target/classes/com/acosux/MSUpdates/dao/UpdateDao.class
+target/classes/com/acosux/MSUpdates/dao/UpdateDaoImpl.class
