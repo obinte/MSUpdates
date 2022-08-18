@@ -5,21 +5,21 @@
  */
 package com.acosux.MSUpdates.controller;
 
-import com.acosux.MSUpdates.util.UpdateTO;
-import com.acosux.MSUpdates.util.VersionTO;
+import com.acosux.MSUpdates.service.UpdateService;
 import com.acosux.MSUpdates.util.RespuestaWebTO;
+import com.acosux.MSUpdates.util.UpdateTO;
 import com.acosux.MSUpdates.util.UtilsJSON;
-import java.util.List;
-import java.util.Map;
+import com.acosux.MSUpdates.util.VersionTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.acosux.MSUpdates.service.UpdateService;
+
+import java.util.List;
+import java.util.Map;
 
 /**
- *
  * @author Tabango
  */
 @RestController
@@ -33,11 +33,11 @@ public class UpdateController {
     public RespuestaWebTO buscarActualizacionesPorVersion(@RequestBody String json) {
         System.out.println("ENTRO");
         RespuestaWebTO resp = new RespuestaWebTO();
-         Map<String, Object> map = UtilsJSON.jsonToMap(json);
-         String version = UtilsJSON.jsonToObjeto(String.class, map.get("version"));
+        Map<String, Object> map = UtilsJSON.jsonToMap(json);
+        String version = UtilsJSON.jsonToObjeto(String.class, map.get("version"));
         resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.ADVERTENCIA.getValor());
         try {
-        List <UpdateTO> respues = actualizacionService.buscarActualizacionesPorVersion(version);
+            List<UpdateTO> respues = actualizacionService.buscarActualizacionesPorVersion(version);
             resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.EXITO.getValor());
             resp.setExtraInfo(respues);
         } catch (Exception e) {
@@ -46,13 +46,13 @@ public class UpdateController {
         }
         return resp;
     }
-    
-     @RequestMapping(value = "/listarVersiones", method = {RequestMethod.GET})
+
+    @RequestMapping(value = "/listarVersiones", method = {RequestMethod.GET})
     public RespuestaWebTO SisActualizacionesTO() {
         RespuestaWebTO resp = new RespuestaWebTO();
         resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.ADVERTENCIA.getValor());
         try {
-            List <VersionTO> respues = actualizacionService.listarVersiones();
+            List<VersionTO> respues = actualizacionService.listarVersiones();
             resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.EXITO.getValor());
             resp.setExtraInfo(respues);
         } catch (Exception e) {

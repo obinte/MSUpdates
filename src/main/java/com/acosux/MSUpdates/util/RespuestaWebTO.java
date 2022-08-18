@@ -8,27 +8,14 @@ package com.acosux.MSUpdates.util;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- *
  * @author developer3
  */
 public class RespuestaWebTO {
-    public enum EstadoOperacionEnum {
-        EXITO("EXITO"), ERROR("ERROR"), ADVERTENCIA("ADVERTENCIA"), SIN_ACCESO("SIN_ACCESO");
-        private final String valor;
-        private EstadoOperacionEnum(String valor) {
-            this.valor = valor;
-        }
-
-        public String getValor() {
-            return valor;
-        }
-        
-    };
     private String estadoOperacion;
+
     private String operacionMensaje;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Object extraInfo;   
-
+    private Object extraInfo;
     public RespuestaWebTO() {
     }
 
@@ -55,6 +42,20 @@ public class RespuestaWebTO {
     public void setExtraInfo(Object extraInfo) {
         this.extraInfo = extraInfo;
     }
-    
-    
+
+    public enum EstadoOperacionEnum {
+        EXITO("EXITO"), ERROR("ERROR"), ADVERTENCIA("ADVERTENCIA"), SIN_ACCESO("SIN_ACCESO");
+        private final String valor;
+
+        EstadoOperacionEnum(String valor) {
+            this.valor = valor;
+        }
+
+        public String getValor() {
+            return valor;
+        }
+
+    }
+
+
 }

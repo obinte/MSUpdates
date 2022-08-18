@@ -1,9 +1,11 @@
 package com.acosux.MSUpdates.security;
 
-import java.io.IOException;
+import org.springframework.stereotype.Component;
+
 import javax.servlet.*;
-import javax.servlet.http.*;
-import org.springframework.stereotype.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Component
 public class CorsFilter implements javax.servlet.Filter {

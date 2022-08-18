@@ -5,15 +5,15 @@
  */
 package com.acosux.MSUpdates.service;
 
+import com.acosux.MSUpdates.dao.UpdateDao;
 import com.acosux.MSUpdates.util.UpdateTO;
 import com.acosux.MSUpdates.util.VersionTO;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.acosux.MSUpdates.dao.UpdateDao;
+
+import java.util.List;
 
 /**
- *
  * @author Trabajo
  */
 @Service
@@ -23,12 +23,12 @@ public class UpdateServiceImpl implements UpdateService {
     private UpdateDao actualizacionDao;
 
     @Override
-    public List <UpdateTO>  buscarActualizacionesPorVersion(String version) throws Exception {
+    public List<UpdateTO> buscarActualizacionesPorVersion(String version) throws Exception {
         return actualizacionDao.buscarActualizacionesPorVersion(version);
     }
 
-   @Override
-    public List <VersionTO>  listarVersiones() throws Exception {
+    @Override
+    public List<VersionTO> listarVersiones() throws Exception {
         return actualizacionDao.listarVersiones();
     }
 

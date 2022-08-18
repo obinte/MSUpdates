@@ -9,12 +9,12 @@ import com.acosux.MSUpdates.util.UpdateTO;
 import com.acosux.MSUpdates.util.VersionTO;
 import com.acosux.MSUpdates.util.dao.GenericDaoImpl;
 import com.acosux.MSUpdates.util.dao.GenericSQLDao;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
- *
  * @author Trabajo
  */
 @Repository

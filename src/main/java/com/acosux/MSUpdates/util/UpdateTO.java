@@ -5,15 +5,10 @@
  */
 package com.acosux.MSUpdates.util;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
- *
  * @author Usuario1
  */
 @Entity
@@ -25,13 +20,13 @@ public class UpdateTO implements Serializable {
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     @Column(name = "act_secuencial")
     private Integer actSecuencial;
-    
+
     @Column(name = "act_version")
     private String actVersion;
-    
+
     @Column(name = "act_titulo")
     private String actTitulo;
-    
+
     @Column(name = "act_descripcion")
     private String actDescripcion;
     @Column(name = "act_video")
@@ -87,9 +82,6 @@ public class UpdateTO implements Serializable {
     public void setActVideo(String actVideo) {
         this.actVideo = actVideo;
     }
-    
-    
-    
-    
+
 
 }

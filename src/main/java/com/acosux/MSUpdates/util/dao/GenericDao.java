@@ -1,9 +1,10 @@
 package com.acosux.MSUpdates.util.dao;
 
-import java.io.Serializable;
-import java.util.List;
 import org.hibernate.Session;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.io.Serializable;
+import java.util.List;
 
 public interface GenericDao<T, K extends Serializable> {
 
@@ -20,8 +21,8 @@ public interface GenericDao<T, K extends Serializable> {
     void insertar(List<T> listInsertar);
 
     @Transactional
-    public List<T> obtenerLista(String consulta, Object[] valoresConsulta, boolean mensaje,
-            Object[] valoresInicializar);
+    List<T> obtenerLista(String consulta, Object[] valoresConsulta, boolean mensaje,
+                         Object[] valoresInicializar);
 
     @Transactional
     void actualizar(T t);
