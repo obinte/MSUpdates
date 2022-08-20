@@ -1,11 +1,5 @@
 package com.acosux.MSUpdates.util.dao;
 
-import java.io.Serializable;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.List;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Id;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -14,6 +8,13 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.EmbeddedId;
+import javax.persistence.Id;
+import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.List;
 
 public class GenericDaoImpl<T, K extends Serializable> implements GenericDao<T, K> {
 
@@ -165,7 +166,7 @@ public class GenericDaoImpl<T, K extends Serializable> implements GenericDao<T, 
 
     @Override
     public Object contar(String consulta, Object[] valores) {
-        Query query = (Query) session().createQuery(consulta);
+        Query query = session().createQuery(consulta);
         if (valores != null) {
             for (Integer i = 0; i < valores.length; i++) {
                 Integer iparameter = i + 1;
@@ -226,7 +227,7 @@ public class GenericDaoImpl<T, K extends Serializable> implements GenericDao<T, 
     @SuppressWarnings("unchecked")
     @Override
     public List<T> obtenerPorHql(String consulta, Object[] valores) {
-        Query query = (Query) session().createQuery(consulta);
+        Query query = session().createQuery(consulta);
         if (valores != null) {
             for (int i = 0; i < valores.length; i++) {
                 if (valores[i] != null) {
@@ -240,10 +241,10 @@ public class GenericDaoImpl<T, K extends Serializable> implements GenericDao<T, 
     @SuppressWarnings("unchecked")
     @Override
     public List<T> obtenerLista(String consulta, Object[] valoresConsulta, boolean mensaje,
-            Object[] valoresInicializar) {
+                                Object[] valoresInicializar) {
         boolean validacion = false;
         List<T> list = null;
-        Query query = (Query) session().createQuery(consulta);
+        Query query = session().createQuery(consulta);
         if (valoresConsulta != null) {
             for (int i = 0; i < valoresConsulta.length; i++) {
                 if (valoresConsulta[i] != null) {
@@ -276,7 +277,7 @@ public class GenericDaoImpl<T, K extends Serializable> implements GenericDao<T, 
     @SuppressWarnings("unchecked")
     @Override
     public T obtenerObjetoPorHql(String consulta, Object[] valores) {
-        Query query = (Query) session().createQuery(consulta);
+        Query query = session().createQuery(consulta);
         if (valores != null) {
             for (int i = 0; i < valores.length; i++) {
                 if (valores[i] != null) {
@@ -292,7 +293,7 @@ public class GenericDaoImpl<T, K extends Serializable> implements GenericDao<T, 
     @SuppressWarnings("unchecked")
     @Override
     public List<T> obtenerPorHql(String consulta, Object[] valores, int min, int max) {
-        Query query = (Query) session().createQuery(consulta).setFirstResult(min).setMaxResults(max);
+        Query query = session().createQuery(consulta).setFirstResult(min).setMaxResults(max);
         if (valores != null) {
             for (int i = 0; i < valores.length; i++) {
                 query.setParameter(String.valueOf(i + 1), valores[i]);
@@ -305,7 +306,7 @@ public class GenericDaoImpl<T, K extends Serializable> implements GenericDao<T, 
     @SuppressWarnings("unchecked")
     @Override
     public T obtenerObjetoPorSql(String consulta, Class<T> type) {
-        Query query = (Query) session().createSQLQuery(consulta).addEntity(type.getName());
+        Query query = session().createSQLQuery(consulta).addEntity(type.getName());
         List<T> lista = query.list();
         return lista == null || lista.isEmpty() ? null : lista.get(0);
     }
@@ -313,7 +314,7 @@ public class GenericDaoImpl<T, K extends Serializable> implements GenericDao<T, 
     @SuppressWarnings("unchecked")
     @Override
     public List<T> obtenerPorSql(String consulta, Class<T> type) {
-        Query query = (Query) session().createSQLQuery(consulta).addEntity(type.getName());
+        Query query = session().createSQLQuery(consulta).addEntity(type.getName());
         return query.list();
     }
 

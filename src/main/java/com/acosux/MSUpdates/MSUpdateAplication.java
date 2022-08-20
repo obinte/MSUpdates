@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 
 /**
- *
  * @author Tabango
  */
 @SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)

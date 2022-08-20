@@ -4,18 +4,17 @@
  */
 package com.acosux.MSUpdates.util;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
- *
  * @author jtabango
  */
 
 @Entity
-public class VersionTO implements Serializable{
+public class VersionTO implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
@@ -32,6 +31,5 @@ public class VersionTO implements Serializable{
         this.act_version = act_version;
     }
 
-   
- 
+
 }

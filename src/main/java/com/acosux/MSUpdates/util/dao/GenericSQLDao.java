@@ -1,25 +1,26 @@
 package com.acosux.MSUpdates.util.dao;
 
-import java.util.List;
 import org.hibernate.Session;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface GenericSQLDao {
 
-	@Transactional
-	<T> List<T> obtenerPorSql(String consulta, Class<T> type);
-      
-      @Transactional
-	<T> List<T> obtenerPorSql(String consulta);
+    @Transactional
+    <T> List<T> obtenerPorSql(String consulta, Class<T> type);
 
-	@Transactional
-	<T> T obtenerObjetoPorSql(String consulta, Class<T> type);
+    @Transactional
+    <T> List<T> obtenerPorSql(String consulta);
 
-	@Transactional
-	Object obtenerObjetoPorSql(String consulta);
+    @Transactional
+    <T> T obtenerObjetoPorSql(String consulta, Class<T> type);
 
-	@Transactional
-	int ejecutarSQL(String consulta);
+    @Transactional
+    Object obtenerObjetoPorSql(String consulta);
 
-	Session session();
+    @Transactional
+    int ejecutarSQL(String consulta);
+
+    Session session();
 }
