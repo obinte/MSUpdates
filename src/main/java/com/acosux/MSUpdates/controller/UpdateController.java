@@ -6,6 +6,8 @@
 package com.acosux.MSUpdates.controller;
 
 import com.acosux.MSUpdates.service.UpdateService;
+import com.acosux.MSUpdates.util.Issues;
+import com.acosux.MSUpdates.util.JiraTask;
 import com.acosux.MSUpdates.util.RespuestaWebTO;
 import com.acosux.MSUpdates.util.UpdateTO;
 import com.acosux.MSUpdates.util.UtilsJSON;
@@ -53,6 +55,20 @@ public class UpdateController {
         resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.ADVERTENCIA.getValor());
         try {
             List<VersionTO> respues = actualizacionService.listarVersiones();
+            resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.EXITO.getValor());
+            resp.setExtraInfo(respues);
+        } catch (Exception e) {
+            resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.ERROR.getValor());
+            resp.setOperacionMensaje(e.getMessage());
+        }
+        return resp;
+    }
+    
+     @RequestMapping(value = "/listarTareas", method = {RequestMethod.GET})
+    public RespuestaWebTO SisListarTareasTO() {
+        RespuestaWebTO resp = new RespuestaWebTO();
+        try {
+            List<Issues> respues = actualizacionService.listarTareas();
             resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.EXITO.getValor());
             resp.setExtraInfo(respues);
         } catch (Exception e) {
