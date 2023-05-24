@@ -21,7 +21,8 @@ public interface UpdateService {
     List<UpdateTO> buscarActualizacionesPorVersion(String version) throws Exception;
 
     List<VersionTO> listarVersiones() throws Exception;
-    
-     List<Issues> listarTareas() throws Exception;
 
+    List<Issues> listarTareas() throws Exception;
+    
+    void actualizarTarea(String key, String fields) throws Exception;
 }

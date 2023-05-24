@@ -1,6 +1,7 @@
 
 package com.acosux.MSUpdates.util;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class IssuesResponse {
     private int maxResults;
     private List<Issues> issues;
     private int startAt;
+    private ObjectNode errorMessages;
 
     public List<Issues> getIssues() {
         return issues;
@@ -53,6 +55,14 @@ public class IssuesResponse {
 
     public void setStartAt(int startAt) {
         this.startAt = startAt;
+    }
+
+    public ObjectNode getErrorMessages() {
+        return errorMessages;
+    }
+
+    public void setErrorMessages(ObjectNode errorMessages) {
+        this.errorMessages = errorMessages;
     }
 
 }

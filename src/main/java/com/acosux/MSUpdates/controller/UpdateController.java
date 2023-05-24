@@ -33,7 +33,6 @@ public class UpdateController {
 
     @RequestMapping(value = "/buscarActualizacionesPorVersion")
     public RespuestaWebTO buscarActualizacionesPorVersion(@RequestBody String json) {
-        System.out.println("ENTRO");
         RespuestaWebTO resp = new RespuestaWebTO();
         Map<String, Object> map = UtilsJSON.jsonToMap(json);
         String version = UtilsJSON.jsonToObjeto(String.class, map.get("version"));
@@ -63,10 +62,25 @@ public class UpdateController {
         }
         return resp;
     }
-    
-     @RequestMapping(value = "/listarTareas", method = {RequestMethod.GET})
+
+    @RequestMapping(value = "/listarTareas", method = {RequestMethod.GET})
     public RespuestaWebTO SisListarTareasTO() {
         RespuestaWebTO resp = new RespuestaWebTO();
+        try {
+            List<Issues> respues = actualizacionService.listarTareas();
+            resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.EXITO.getValor());
+            resp.setExtraInfo(respues);
+        } catch (Exception e) {
+            resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.ERROR.getValor());
+            resp.setOperacionMensaje(e.getMessage());
+        }
+        return resp;
+    }
+
+    @RequestMapping(value = "/actualizarTarea", method = {RequestMethod.POST})
+    public RespuestaWebTO actualizarTarea(@RequestBody String json) {
+        RespuestaWebTO resp = new RespuestaWebTO();
+        Map<String, Object> map = UtilsJSON.jsonToMap(json);
         try {
             List<Issues> respues = actualizacionService.listarTareas();
             resp.setEstadoOperacion(RespuestaWebTO.EstadoOperacionEnum.EXITO.getValor());
